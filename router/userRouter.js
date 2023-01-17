@@ -3,7 +3,6 @@ const { saveUser, findUser } = require('../db/db');
 const bcrypt = require('bcrypt');
 const User = require('../models/userModel');
 const mongoose = require('mongoose');
-
 const router = express.Router();
 
 router.post('/register', (req, res, next) => {
@@ -36,7 +35,7 @@ router.post('/register', (req, res, next) => {
               .catch((err) => {
                 res.status(501).json({
                   error: {
-                    message: err.message,
+                    message: message,
                     status: err.status,
                   },
                 });
@@ -48,7 +47,7 @@ router.post('/register', (req, res, next) => {
     .catch((err) => {
       res.status(501).json({
         error: {
-          message: err.message,
+          message: message,
           status: err.status,
         },
       });
