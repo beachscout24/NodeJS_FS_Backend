@@ -34,18 +34,24 @@ router.post('/register', (req, res, next) => {
                 });
               })
               .catch((err) => {
-                error: {
-                  message: err.message;
-                }
+                res.status(501).json({
+                  error: {
+                    message: err.message,
+                    status: err.status,
+                  },
+                });
               });
           }
         });
       }
     })
     .catch((err) => {
-      error: {
-        message: err.message;
-      }
+      res.status(501).json({
+        error: {
+          message: err.message,
+          status: err.status,
+        },
+      });
     });
 });
 
