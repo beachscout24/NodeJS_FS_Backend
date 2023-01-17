@@ -4,6 +4,7 @@ const User = require('../models/userModel');
 
 const connect = async () => {
   console.log('MongoDB is up and running');
+  mongoose.set('strictQuery', true);
   await mongoose.connect(process.env.mongo);
 };
 
