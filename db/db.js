@@ -3,9 +3,8 @@ const mongoose = require('mongoose');
 const User = require('../models/userModel');
 
 const connect = async () => {
-  await mongoose.connect(process.env.mongo, () => {
-    console.log(`MongoDB is up and running`);
-  });
+  console.log('MongoDB is up and running');
+  await mongoose.connect(process.env.mongo);
 };
 
 const disconnect = async () => {
@@ -14,7 +13,7 @@ const disconnect = async () => {
 
 // obj {firstName: req.body.firstName, email: req.body.email}
 const findUser = async (obj) => {
-  User.findOne(obj);
+  return User.findOne(obj).exec();
 };
 
 const saveUser = async (newUser) => {
