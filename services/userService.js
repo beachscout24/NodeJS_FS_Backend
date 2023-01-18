@@ -52,7 +52,7 @@ exports.loginUser = async (req, res) => {
       if (result) {
         // create a JSON Web Token
         loggedUser.password = null;
-        const token = jwt.sign({ user: loggedUser }, process.env.jwt_secret);
+        const token = jwt.sign({ user: loggedUser }, process.env.jwt);
         // return response stating authentication successful, token, logged:true
         return res.status(201).json({
           user: loggedUser,
