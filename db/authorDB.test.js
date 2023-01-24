@@ -8,7 +8,7 @@ const {
   deleteAuthor,
 } = require('./authorDb');
 
-jest.mock('./authorDB');
+jest.mock('./authorDb');
 
 describe('Author DB Tests', () => {
   test('As a user I want to save an author to the db', async () => {
