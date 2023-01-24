@@ -7,6 +7,7 @@ const User = require('../models/userModel');
 const mongoose = require('mongoose');
 
 exports.registerUser = async (req, res) => {
+  console.log('register');
   try {
     const user = await findUser({ email: req.body.email });
     // if the user exist
