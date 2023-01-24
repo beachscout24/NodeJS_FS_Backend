@@ -60,7 +60,7 @@ exports.getAuthorsById = async (req, res) => {
     if (author) {
       return successTemplate(res, author, messages.author_found, 200);
     } else {
-      return notFoundTemplate(res, messages.no_author_found, 404);
+      throw new Error(messages.no_author_found);
     }
   } catch (e) {
     return errorTemplate(res, e, e.message, 500);

@@ -373,7 +373,7 @@
                   },
                   "book": {
                     "type": "string",
-                    "default": "Mike Leaf"
+                    "default": ""
                   },
                   "publisher": {
                     "type": "string",
