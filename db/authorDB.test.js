@@ -6,10 +6,9 @@ const {
   saveAuthor,
   updateAuthor,
   deleteAuthor,
-} = require('../db/authorDb');
-const { JsonWebTokenError } = require('jsonwebtoken');
+} = require('./authorDb');
 
-jest.mock('./authorDB.js');
+jest.mock('./authorDB');
 
 describe('Author DB Tests', () => {
   test('As a user I want to save an author to the db', async () => {
