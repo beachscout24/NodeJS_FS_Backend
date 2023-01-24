@@ -1,0 +1,572 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "NodeJS Bootcamp Documentation API",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Eric Clarke",
+      "email": "eric@eric.com",
+      "url": "http://baboonbutts.nft"
+    }
+  },
+  "servers": [
+    {
+      "description": "Local Server",
+      "url": "http://localhost:3001/"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "bearerFormat": "JWT",
+        "scheme": "bearer"
+      }
+    }
+  },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/users/register": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Register User",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "firstName": {
+                    "type": "string",
+                    "default": "Eric"
+                  },
+                  "lastName": {
+                    "type": "string",
+                    "default": "Clarke"
+                  },
+                  "address": {
+                    "type": "string",
+                    "default": "123 Main St"
+                  },
+                  "city": {
+                    "type": "string",
+                    "default": "JAX"
+                  },
+                  "state": {
+                    "type": "string",
+                    "default": "FL"
+                  },
+                  "zipCode": {
+                    "type": "string",
+                    "default": "32222"
+                  },
+                  "email": {
+                    "type": "string",
+                    "default": "eric@eric.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "default": "Eric1999"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "201": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Error"
+          },
+          "501": {
+            "description": "Error"
+          }
+        }
+      }
+    },
+    "/users/login": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Login Users",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "default": "eric@eric.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "default": "Eric1999"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "201": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Error"
+          },
+          "501": {
+            "description": "Error"
+          }
+        }
+      }
+    },
+    "/books": {
+      "post": {
+        "tags": [
+          "Books"
+        ],
+        "description": "Save a book",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "default": "A tree grows in Brooklyn"
+                  },
+                  "author": {
+                    "type": "string",
+                    "default": "Mike Leaf"
+                  },
+                  "ISBN": {
+                    "type": "string",
+                    "default": "123-56-234-0"
+                  },
+                  "numberOfPages": {
+                    "type": "string",
+                    "default": "256"
+                  },
+                  "price": {
+                    "type": "number",
+                    "default": 12.99
+                  },
+                  "yearPublished": {
+                    "type": "string",
+                    "default": "1955"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "201": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Error"
+          },
+          "501": {
+            "description": "Error"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Books"
+        ],
+        "description": "Get all book",
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "201": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Error"
+          },
+          "501": {
+            "description": "Error"
+          }
+        }
+      }
+    },
+    "/books/{bookId}": {
+      "get": {
+        "tags": [
+          "Books"
+        ],
+        "description": "Get a book by id",
+        "parameters": [
+          {
+            "name": "bookId",
+            "in": "path",
+            "description": "The book id:",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "201": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Error"
+          },
+          "501": {
+            "description": "Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Books"
+        ],
+        "description": "Update a book by id",
+        "parameters": [
+          {
+            "name": "bookId",
+            "in": "path",
+            "description": "The book id:",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "default": "A tree grows in Brooklyn Heights"
+                  },
+                  "author": {
+                    "type": "string",
+                    "default": "Mike Leafy"
+                  },
+                  "ISBN": {
+                    "type": "string",
+                    "default": "123-56-234-000-0"
+                  },
+                  "numberOfPages": {
+                    "type": "string",
+                    "default": "257"
+                  },
+                  "price": {
+                    "type": "number",
+                    "default": 15.99
+                  },
+                  "yearPublished": {
+                    "type": "string",
+                    "default": "1956"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "201": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Error"
+          },
+          "501": {
+            "description": "Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Books"
+        ],
+        "description": "Delete a book by id",
+        "parameters": [
+          {
+            "name": "bookId",
+            "in": "path",
+            "description": "The book id:",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "201": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Error"
+          },
+          "501": {
+            "description": "Error"
+          }
+        }
+      }
+    },
+    "/authors": {
+      "post": {
+        "tags": [
+          "Authors"
+        ],
+        "description": "Save a author",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "default": "Mike Leaf"
+                  },
+                  "book": {
+                    "type": "string",
+                    "default": "Mike Leaf"
+                  },
+                  "publisher": {
+                    "type": "string",
+                    "default": "tynsdale"
+                  },
+                  "website": {
+                    "type": "string",
+                    "default": "http://mysite.com"
+                  },
+                  "twitter": {
+                    "type": "string",
+                    "default": "@authorGuy"
+                  },
+                  "about": {
+                    "type": "string",
+                    "default": "Hi, I'm an author"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "201": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Error"
+          },
+          "501": {
+            "description": "Error"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Authors"
+        ],
+        "description": "Get all authors",
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "201": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Error"
+          },
+          "501": {
+            "description": "Error"
+          }
+        }
+      }
+    },
+    "/authors/{authorId}": {
+      "get": {
+        "tags": [
+          "Authors"
+        ],
+        "description": "Get a author by id",
+        "parameters": [
+          {
+            "name": "authorId",
+            "in": "path",
+            "description": "The author id:",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "201": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Error"
+          },
+          "501": {
+            "description": "Error"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Authors"
+        ],
+        "description": "Update a author by id",
+        "parameters": [
+          {
+            "name": "authorId",
+            "in": "path",
+            "description": "The author id:",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "default": "Mike Leafy"
+                  },
+                  "book": {
+                    "type": "string",
+                    "default": ""
+                  },
+                  "publisher": {
+                    "type": "string",
+                    "default": "tynsdale"
+                  },
+                  "website": {
+                    "type": "string",
+                    "default": "http://tynsdale.com"
+                  },
+                  "twitter": {
+                    "type": "string",
+                    "default": "@authorGuy"
+                  },
+                  "about": {
+                    "type": "string",
+                    "default": "Hi, I'm an author!!"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "201": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Error"
+          },
+          "501": {
+            "description": "Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Authors"
+        ],
+        "description": "Delete a author by id",
+        "parameters": [
+          {
+            "name": "authorId",
+            "in": "path",
+            "description": "The author id:",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "201": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Error"
+          },
+          "501": {
+            "description": "Error"
+          }
+        }
+      }
+    }
+  }
+}

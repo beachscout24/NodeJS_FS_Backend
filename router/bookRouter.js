@@ -6,11 +6,15 @@ const {
   postBook,
   updateBook,
   deleteBook,
+  getAllBookIds,
 } = require('../services/bookService');
 const auth = require('../auth/authorization');
 
 // http://localhost:3001/books
 router.get('/', [auth, getAllBooks]);
+
+// http://localhost:3001/books/books
+router.get('/books', [auth, getAllBookIds]);
 
 // http://localhost:3001/books/34
 router.get('/:bookId', [auth, getBookById]);

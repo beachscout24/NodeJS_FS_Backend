@@ -19,7 +19,19 @@ exports.getAllBooks = async (req, res) => {
       result: books,
     });
   } catch (e) {
-    return errorTemplate(res, e, e.message, 500);
+    return errorTemplate(res, e, messages.book_not_found, 500);
+  }
+};
+
+exports.getAllBookIds = async (req, res) => {
+  try {
+    const books = await findBooks({}, '_id, title');
+    res.status(200).json({
+      message: messages.books_found,
+      result: books,
+    });
+  } catch (e) {
+    return errorTemplate(res, e, messages.book_not_found, 500);
   }
 };
 
