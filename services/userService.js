@@ -7,7 +7,7 @@ const User = require('../models/userModel');
 const mongoose = require('mongoose');
 
 exports.registerUser = async (req, res) => {
-  console.log('register');
+  console.log('Registering');
   try {
     const user = await findUser({ email: req.body.email });
     // if the user exist
@@ -27,7 +27,7 @@ exports.registerUser = async (req, res) => {
       const savedUser = await saveUser(newUser);
       return res.status(201).json({
         message: 'Successful Registration',
-        user: savedUser,
+        result: savedUser,
       });
     }
   } catch (e) {
@@ -56,7 +56,7 @@ exports.loginUser = async (req, res) => {
         const token = jwt.sign({ user: loggedUser }, process.env.jwt);
         // return response stating authentication successful, token, logged:true
         return res.status(201).json({
-          user: loggedUser,
+          result: loggedUser,
           logged: true,
           token: token,
           message: 'Login Successful',

@@ -46,7 +46,7 @@ exports.getAuthors = async (req, res) => {
     if (authors.length > 0) {
       return successTemplate(res, authors, messages.authors_found, 200);
     } else {
-      throw new Error(messages.no_author_found);
+      return successTemplate(res, authors, messages.no_author_found, 206);
     }
   } catch (e) {
     return errorTemplate(res, e, e.message, 500);
